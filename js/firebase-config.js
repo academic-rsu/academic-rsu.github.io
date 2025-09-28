@@ -103,7 +103,7 @@ function calculateXPForNextLevel(points) {
 
 // Check if user is admin
 function isAdmin(email) {
-    return email && email.endsWith('@admin.com');
+    return email && email.endsWith('admin@admin.com');
 }
 
 // Logout function
