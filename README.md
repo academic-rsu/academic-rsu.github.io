@@ -109,6 +109,102 @@ service firebase.storage {
 }
 ```
 
+
+
+
+
+manually create the users collection and your admin document from scratch in Firestore.
+
+🔹 Step 1. Go to Firestore Database
+
+Open Firebase Console
+
+Choose your project.
+
+From the left menu, click Firestore Database.
+
+If it says “No data yet”, click Start collection.
+
+
+🔹 Step 2. Create the users Collection
+
+Collection ID → type: users
+
+
+Click Next.
+
+
+🔹 Step 3. Create Your User Document
+
+Document ID → set this to your Firebase Authentication UID.
+
+To find it:
+
+Go to Authentication → Users in Firebase Console.
+
+Copy your UID (long string like f8XyQ9aBc12345...).
+
+Paste it as the Document ID.
+
+
+🔹 Step 4. Add Fields
+
+Click Add field and enter the following:
+
+1.Field: email
+
+Type: string
+
+Value: your email (same as used for signup).
+
+
+2.Field: role
+
+Type: string
+
+Value: admin
+
+
+3.Field: isAdmin
+
+Type: boolean
+
+Value: true
+
+
+Your document should look like this:
+
+{
+  "email": "you@example.com",
+  "role": "admin",
+  "isAdmin": true,
+  "createdAt": "2025-09-29T12:34:56Z"
+}
+
+🔹 Step 5. Save
+
+Click Save.
+
+Your users/{uid} document now exists with admin privileges.
+
+🔹 Step 6. Test
+
+Go to your website and log in with that account.
+
+Try opening /admin.html.
+
+The site should now see isAdmin: true and grant access.
+
+✅ Done!
+Now you have a users collection with your admin document created manually.
+
+
+(Optional) Add more admins → just repeat the same process for another user’s UID.
+
+
+
+
+
 ## Installation & Setup
 
 1. **Clone or download** this repository
