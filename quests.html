@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Quest - Quests</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="dashboard-page">
+    <nav class="navbar">
+        <div class="nav-brand">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Academic Quest</span>
+        </div>
+        <div class="nav-menu">
+            <a href="dashboard.html" class="nav-link">
+                <i class="fas fa-home"></i> Dashboard
+            </a>
+            <a href="quests.html" class="nav-link active">
+                <i class="fas fa-tasks"></i> Quests
+            </a>
+            <a href="leaderboard.html" class="nav-link">
+                <i class="fas fa-trophy"></i> Leaderboard
+            </a>
+            <a href="profile.html" class="nav-link">
+                <i class="fas fa-user"></i> Profile
+            </a>
+            <div class="nav-link" id="adminPanel" style="display: none;">
+                <a href="admin.html">
+                    <i class="fas fa-cog"></i> Admin Panel
+                </a>
+            </div>
+        </div>
+        <div class="nav-user">
+            <span id="userGreeting">Welcome!</span>
+            <button onclick="logout()" class="btn-logout">
+                <i class="fas fa-sign-out-alt"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="page-header">
+            <h1><i class="fas fa-tasks"></i> Available Quests</h1>
+            <p>Complete quests to earn points and badges!</p>
+        </div>
+
+        <div class="quests-container">
+            <div class="quests-grid" id="questsGrid">
+                <div class="loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Loading quests...</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Quest Submission Modal -->
+    <div id="submissionModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Submit Quest</h2>
+                <span class="close" onclick="closeSubmissionModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <h3 id="modalQuestTitle"></h3>
+                <p id="modalQuestDescription"></p>
+                <div class="form-group">
+                    <label for="submissionFile">Upload your submission:</label>
+                    <input type="file" id="submissionFile" accept=".pdf,.doc,.docx,.txt,.jpg,.jpeg,.png" required>
+                </div>
+                <div class="form-group">
+                    <label for="submissionNotes">Additional notes (optional):</label>
+                    <textarea id="submissionNotes" placeholder="Add any notes about your submission..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button onclick="closeSubmissionModal()" class="btn-secondary">Cancel</button>
+                <button onclick="submitQuest()" class="btn-primary">Submit Quest</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+    
+    <script src="js/firebase-config.js"></script>
+    <script src="js/quests.js"></script>
+</body>
+</html>
